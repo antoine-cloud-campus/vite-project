@@ -1,7 +1,7 @@
 import './App.css'
 import Footer from './components/Footer'
 import Header from './components/header'
-import DishList from './components/DishList'
+import Dish from './components/Dish'
 
 const dishes = [
   {
@@ -26,7 +26,9 @@ function App() {
   return (
     <>
       <Header />
-      <DishList dishes={dishes} />
+      <Dish dish={dishes[0]}/>
+      <Dish dish={dishes[1]}/>
+      <Dish dish={dishes[2]}/>
       <Footer />
     </>
   )

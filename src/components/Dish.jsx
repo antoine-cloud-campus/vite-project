@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Dish = ({ dish }) => {
+const Dish = ({ title, price, img }) => {
     return (
         <div className='card'>
-            <h2>{dish.title}</h2>
-            <p>{dish.price}€</p>
-            <img src={dish.img} alt={dish.title} />
+            <h2>{title}</h2>
+            <p>{price}€</p>
+            <img src={img} alt={title} />
         </div>
     );
 };

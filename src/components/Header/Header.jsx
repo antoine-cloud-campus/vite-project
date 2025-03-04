@@ -3,7 +3,7 @@ import logo from '../../assets/man.webp';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './Header.scss';
 
-const Header = () => {
+const Header = ({ cartCount }) => {
     return (
         <header>
             <Navbar className="bg-body-tertiary">
@@ -13,10 +13,13 @@ const Header = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ms-auto">
+                        <Nav>
                             <Nav.Link href="/">Home</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
+                    <Navbar.Text>
+                        🛒 Panier : <strong>{cartCount}</strong> article{cartCount > 1 ? "s" : ""}
+                    </Navbar.Text>
                 </Container>
             </Navbar>
         </header>

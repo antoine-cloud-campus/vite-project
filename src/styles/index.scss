@@ -1,2 +1,17 @@
 @import "bootstrap/scss/bootstrap";
 @import "global";
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+    min-height: 100dvh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}

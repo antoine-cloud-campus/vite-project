@@ -34,28 +34,38 @@ const dishes = [
 function App() {
 
   const [showNewOnly, setShowNewOnly] = useState(false);
+  const [cartCount, setCartCount] = useState(0)
+
 
   const handleShowNewOnly = () => {
     setShowNewOnly(!showNewOnly)
+  }
+
+  const addToCart = () => {
+    setCartCount(cartCount + 1)
   }
 
   const availableDishes = dishes.filter(dish => dish.stock > 0 && (!showNewOnly || dish.isNew));
 
   return (
     <>
-      <Header />
-      <Container>
-        <Row>
-          <Button onClick={handleShowNewOnly}>{showNewOnly ? "Nouveautés uniquement" : "Voir les plats disponibles"}</Button>
-        </Row>
-        <Row>
-          {availableDishes.map(dish => (
-            <Col md={4} key={dish.id}>
-              <Dish title={dish.title} price={dish.price} img={dish.img} isNew={dish.isNew} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
+      <Header cartCount={cartCount} />
+      <main>
+        <Container>
+          <Button onClick={handleShowNewOnly} variant='primary'>
+            {showNewOnly ? "Nouveautés uniquement" : "Voir les plats disponibles"}
+          </Button>
+        </Container>
+        <Container>
+          <Row>
+            {availableDishes.map(dish => (
+              <Col md={4} key={dish.id}>
+                <Dish title={dish.title} price={dish.price} img={dish.img} isNew={dish.isNew} addToCart={addToCart}/>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </main>
       <Footer />
     </>
   )

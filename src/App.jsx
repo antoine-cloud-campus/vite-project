@@ -3,7 +3,6 @@ import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import Dish from './components/Dish/Dish'
 import { Container, Row, Col, Button } from 'react-bootstrap'
-import './App.scss'
 
 const dishes = [
   {
@@ -40,14 +39,9 @@ function App() {
     setShowNewOnly(!showNewOnly)
   }
 
-  const availableDishes = dishes.filter(dish => { dish.stock > 0 })
+  const availableDishes = dishes.filter(dish => dish.stock > 0)
 
-  const filteredDishes = availableDishes.filter(dish => {
-    if (showNewOnly) {
-      return dish.isNew;
-    }
-    return dish
-  });
+  const filteredDishes = availableDishes.filter(dish => showNewOnly ? dish.isNew : true);
 
   return (
     <>

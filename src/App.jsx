@@ -11,7 +11,7 @@ const dishes = [
     price: 3,
     img: "https://cdn.pixabay.com/photo/2016/08/23/08/53/tacos-1613795_960_720.jpg",
     isNew: true,
-    isInStock: true
+    stock: 12
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const dishes = [
     price: 12,
     img: "https://cdn.pixabay.com/photo/2014/01/14/22/13/mexican-245240_960_720.jpg",
     isNew: false,
-    isInStock: false
+    stock: 0
   },
   {
     id: 3,
@@ -27,11 +27,11 @@ const dishes = [
     price: 15,
     img: "https://cdn.pixabay.com/photo/2021/02/04/03/57/mole-5980185_960_720.jpg",
     isNew: false,
-    isInStock: true
+    stock: 5
   }
 ]
 
-const dishesInStock = dishes.filter(dish => dish.isInStock)
+const dishesInStock = dishes.filter(dish => dish.stock)
 
 function App() {
 

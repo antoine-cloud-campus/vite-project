@@ -1,0 +1,18 @@
+@mixin grid-items-center {
+    display: grid;
+    place-items: center;
+}
+
+@mixin grid-content-center {
+    display: grid;
+    place-content: center;
+}
+
+@mixin padding-horizontal($size) {
+    padding: 0 $size;
+
+}
+
+@mixin padding-vertical($size) {
+    padding: $size 0;
+}

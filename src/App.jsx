@@ -40,7 +40,12 @@ function App() {
     setShowNewOnly(!showNewOnly)
   }
 
-  const filteredDishes = showNewOnly ? dishes.filter(dish => dish.isNew) : dishes.filter(dish => dish.stock > 0);
+  const filteredDishes = dishes.filter(dish => {
+    if (showNewOnly) {
+      return dish.isNew;
+    }
+    return dish.stock > 0;
+  });
 
   return (
     <>

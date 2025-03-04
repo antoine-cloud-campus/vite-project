@@ -1,19 +1,25 @@
-.Dish {
+.card {
     cursor: pointer;
     transition: ease 300ms all;
-
-    img {
-        height: 250px;
-        object-fit: cover;
-    }
 
     .badge {
         position: absolute;
         right: 0;
         margin: 15px;
     }
+
+    img {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    &-body {
+        display: grid;
+        gap: 4px;
+    }
+
 }
 
-.Dish:hover {
+.card:hover {
     scale: 1.05;
 }

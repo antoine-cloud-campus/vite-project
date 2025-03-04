@@ -5,5 +5,5 @@
     color: $light-color;
     background: $secondary-color;
     text-align: center;
-    @include padding-vertical(20px);
+    padding-block: 20px;
 }

@@ -52,7 +52,7 @@ function App() {
       <Header />
       <Container>
         <Row>
-          <Button onClick={handleShowNewOnly}>{filteredDishes ? "Nouveautés uniquement" : "Voir les plats disponibles"}</Button>
+          <Button onClick={handleShowNewOnly}>{showNewOnly ? "Nouveautés uniquement" : "Voir les plats disponibles"}</Button>
         </Row>
         <Row>
           {filteredDishes.map(dish => (

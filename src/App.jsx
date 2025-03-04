@@ -39,9 +39,9 @@ function App() {
     setShowNewOnly(!showNewOnly)
   }
 
-  const availableDishes = dishes.filter(dish => dish.stock > 0)
+  const availableDishes = dishes.filter(dish => showNewOnly ? dish.stock > 0 : dish.stock > 0 && dish.isNew);
 
-  const filteredDishes = availableDishes.filter(dish => showNewOnly ? dish.isNew : true);
+  // const filteredDishes = dishes.filter((dish) => dish.stock > 0 && (!showNewOnly || dish.isNew));
 
   return (
     <>
@@ -51,7 +51,7 @@ function App() {
           <Button onClick={handleShowNewOnly}>{showNewOnly ? "Nouveautés uniquement" : "Voir les plats disponibles"}</Button>
         </Row>
         <Row>
-          {filteredDishes.map(dish => (
+          {availableDishes.map(dish => (
             <Col md={4} key={dish.id}>
               <Dish title={dish.title} price={dish.price} img={dish.img} isNew={dish.isNew} />
             </Col>

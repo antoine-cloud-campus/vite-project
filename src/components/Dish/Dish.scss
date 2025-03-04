@@ -1,4 +1,19 @@
-.Dish img {
-    height: 250px;
-    object-fit: cover;
+.Dish {
+    cursor: pointer;
+    transition: ease 300ms all;
+
+    img {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .badge {
+        position: absolute;
+        right: 0;
+        margin: 15px;
+    }
+}
+
+.Dish:hover {
+    scale: 1.05;
 }

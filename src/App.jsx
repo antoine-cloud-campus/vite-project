@@ -1,11 +1,10 @@
-import { useState } from 'react'
-import Footer from './components/Footer/Footer'
-import Header from './components/Header/Header'
-import Dish from './components/Dish/Dish'
-import { Container, Row, Col, Button } from 'react-bootstrap'
-import { CartProvider } from './context/cartContext'
+import { useState, useRef, useContext, useEffect } from 'react';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Dish from './components/Dish/Dish';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { CartContext } from './context/cartContext';
 
-// Plats
 const dishes = [
   {
     id: 1,
@@ -31,15 +30,21 @@ const dishes = [
     isNew: false,
     stock: 5
   }
-]
+];
 
 function App() {
-
   const [showNewOnly, setShowNewOnly] = useState(false);
+  const { cartCount } = useContext(CartContext);
+
+  const prevCartCountRef = useRef(cartCount);
+
+  useEffect(() => {
+    prevCartCountRef.current = cartCount;
+  }, [cartCount]);
 
   const handleShowNewOnly = () => {
-    setShowNewOnly(!showNewOnly)
-  }
+    setShowNewOnly(!showNewOnly);
+  };
 
   const availableDishes = dishes.filter(dish => dish.stock > 0 && (!showNewOnly || dish.isNew));
 
@@ -61,10 +66,15 @@ function App() {
             ))}
           </Row>
         </Container>
+        <Container className="mt-3">
+          <p>
+            Le panier est passé de {prevCartCountRef.current} à {cartCount} articles.
+          </p>
+        </Container>
       </main>
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

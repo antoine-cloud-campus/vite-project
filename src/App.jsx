@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext, createContext } from 'react'
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import Dish from './components/Dish/Dish'
 import { Container, Row, Col, Button } from 'react-bootstrap'
+import { CartProvider } from './context/cartContext'
 
+// Plats
 const dishes = [
   {
     id: 1,
@@ -34,22 +36,16 @@ const dishes = [
 function App() {
 
   const [showNewOnly, setShowNewOnly] = useState(false);
-  const [cartCount, setCartCount] = useState(0)
-
 
   const handleShowNewOnly = () => {
     setShowNewOnly(!showNewOnly)
   }
 
-  const addToCart = () => {
-    setCartCount(cartCount + 1)
-  }
-
   const availableDishes = dishes.filter(dish => dish.stock > 0 && (!showNewOnly || dish.isNew));
 
   return (
-    <>
-      <Header cartCount={cartCount} />
+    <CartProvider>
+      <Header />
       <main>
         <Container>
           <Button onClick={handleShowNewOnly} variant='primary'>
@@ -60,14 +56,14 @@ function App() {
           <Row>
             {availableDishes.map(dish => (
               <Col md={4} key={dish.id}>
-                <Dish title={dish.title} price={dish.price} img={dish.img} isNew={dish.isNew} addToCart={addToCart}/>
+                <Dish title={dish.title} price={dish.price} img={dish.img} isNew={dish.isNew} />
               </Col>
             ))}
           </Row>
         </Container>
       </main>
       <Footer />
-    </>
+    </CartProvider>
   )
 }
 

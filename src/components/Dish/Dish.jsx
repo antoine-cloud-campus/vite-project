@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 const Dish = ({ title, price, img, isNew }) => {
 
-    const { addToCart } = useContext(CartContext);
+    const { dispatch } = useContext(CartContext);
 
     return (
         <Card>
@@ -16,7 +16,8 @@ const Dish = ({ title, price, img, isNew }) => {
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>{price}€</Card.Text>
-                <Button onClick={addToCart} variant="primary">Ajouter au panier</Button>
+                <Button onClick={() => dispatch({ type: "increment" })} variant="primary">Ajouter au panier</Button>
+                <Button onClick={() => dispatch({ type: "decrement" })} variant="primary">Retirer du panier</Button>
             </Card.Body>
 
         </Card>

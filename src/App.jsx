@@ -1,4 +1,4 @@
-import { useState, useContext, createContext } from 'react'
+import { useState } from 'react'
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import Dish from './components/Dish/Dish'
@@ -44,7 +44,7 @@ function App() {
   const availableDishes = dishes.filter(dish => dish.stock > 0 && (!showNewOnly || dish.isNew));
 
   return (
-    <CartProvider>
+    <>
       <Header />
       <main>
         <Container>
@@ -63,7 +63,7 @@ function App() {
         </Container>
       </main>
       <Footer />
-    </CartProvider>
+    </>
   )
 }
 
